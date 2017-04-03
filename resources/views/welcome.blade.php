@@ -7,7 +7,8 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            width: 600px;
+            height: 400px;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -33,14 +34,15 @@
 
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng(48.669026, 19.69902400000001),
-            zoom: 12
+            center: new google.maps.LatLng(48.6724821, 19.696058),
+            zoom: 7
         });
         var infoWindow = new google.maps.InfoWindow;
 
         // Change this depending on the name of your PHP or XML file
         downloadUrl('http://localhost:8000/data', function(data) {
             var xml = data.responseXML;
+
             var markers = xml.documentElement.getElementsByTagName('marker');
             Array.prototype.forEach.call(markers, function(markerElem) {
                 var name = markerElem.getAttribute('name');
@@ -82,18 +84,21 @@
                     '</div>';
                 infowincontent.appendChild(text2);
 
-
-
                 var icon = customLabel[type] || {};
                 var marker = new google.maps.Marker({
                     map: map,
                     position: point,
                     label: icon.label
                 });
+
+
                 marker.addListener('click', function() {
                     infoWindow.setContent(infowincontent);
                     infoWindow.open(map, marker);
+
+
                 });
+
             });
         });
     }
@@ -114,12 +119,16 @@
 
         request.open('GET', url, true);
         request.send(null);
+
     }
 
     function doNothing() {}
 </script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANgYNnUb9ebTTtB8RWgx0zHr4Nl-llHrI&callback=initMap">
+
 </script>
+
 </body>
 </html>
