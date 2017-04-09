@@ -65,9 +65,14 @@
                 });
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        console.log(name);
+                        
                         //infowindow.setContent(markers[i].getAttribute("name"));
-                        infowindow.setContent("<img src='http://myhero.com/images/guest/g218099/hero57552/g218099_u64283_chuck_norris.jpg'>");
+                        infowindow.setContent("<strong>názov miesta:</strong>"+markers[i].getAttribute('name')+"<br>"+
+                            "<strong>ulica:</strong>"+markers[i].getAttribute('address')+"<br>"+
+                            "<img src='http://myhero.com/images/guest/g218099/hero57552/g218099_u64283_chuck_norris.jpg'>"
+
+                        );
+                        console.log(markers[i]);
                         infowindow.open(map, marker);
                     }
                 })(marker, i));
