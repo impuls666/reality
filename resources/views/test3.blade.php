@@ -7,8 +7,8 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            width: 600px;
-            height: 400px;
+            width: 100%;
+            height: 768px;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -65,11 +65,12 @@
                 });
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        
+
                         //infowindow.setContent(markers[i].getAttribute("name"));
-                        infowindow.setContent("<strong>názov miesta:</strong>"+markers[i].getAttribute('name')+"<br>"+
-                            "<strong>ulica:</strong>"+markers[i].getAttribute('address')+"<br>"+
-                            "<img src='http://myhero.com/images/guest/g218099/hero57552/g218099_u64283_chuck_norris.jpg'>"
+                        infowindow.setContent(
+                        "<strong>názov miesta:</strong>"+markers[i].getAttribute('name')+"<br>"+
+                        "<strong>ulica:</strong>"+markers[i].getAttribute('address')+"<br>"+
+                        "<img src="+/images/+"fotky/"+markers[i].getAttribute('image')+">"
 
                         );
                         console.log(markers[i]);

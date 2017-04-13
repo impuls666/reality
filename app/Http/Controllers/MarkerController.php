@@ -34,6 +34,7 @@ class MarkerController extends Controller
         $marker->name = Input::get("name");
         $marker->type = Input::get("type");
 
+
         function getLatLong($address)
         {
             if (!empty($address)) {
@@ -56,8 +57,22 @@ class MarkerController extends Controller
             }
         }
 
+        $file = $request->file('image');
+        $fileName = $file->getClientOriginalName();
+        $destinationPath = public_path().'/images/fotky/';
+        echo 'File Name: '.$file->getClientOriginalName();
+
+        echo '<br>';
+        echo 'File Real Path: '.$file->getRealPath();
+        Input::file('image')->move($destinationPath, $fileName);
+
+
+        //Input::file('image')->move($destinationPath);
+
+
+
         $address = Input::get("address");
-        //$address = 'Justičná 2';
+
         $latLong = getLatLong($address);
         echo $latitude = $latLong['latitude']?$latLong['latitude']:'Not found';
         echo '<br>';
@@ -66,9 +81,10 @@ class MarkerController extends Controller
         $marker->address = $address;
         $marker->lat = $latitude;
         $marker->lng = $longitude;
+        $marker->displayimage = $fileName;
 
         $marker->save();
-        return redirect()->route('home')->with('status', 'Záznam pridaný');
+        //return redirect()->route('home')->with('status', 'Záznam pridaný');
     }
 
     public function showlatlongindex()

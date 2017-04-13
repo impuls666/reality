@@ -12,14 +12,14 @@
                     </div>
                 @endif
                 <div class="panel-body">
-                   {!! Form::open(['route' => 'store']) !!}
+                   {!! Form::open(['route' => 'store','files'=>'true']) !!}
                    {!!Form::label('name', 'označenie') !!}
                    {!! Form::text('name') !!}<br>
                    {!!Form::label('address', 'adresa') !!}
                    {!! Form::text('address') !!}<br>
-
                    {!!Form::label('type', 'type') !!}
-                   {!! Form::text('type') !!}<br>
+                   {!! Form::select('type', array('restaurant' => 'ikona1', 'bar' => 'ikona2')) !!}
+                    {!! Form::file('image') !!}<br>
                    {!! Form::submit('Vložiť') !!}
                    {!! Form::close() !!}
 
