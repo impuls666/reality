@@ -16,7 +16,7 @@
 //dd(\App\Marker::all()->toArray());
 Route::get('/', function ()
 {
-    return view('test3');
+    return view('map');
 });
 
 Route::get('data', 'MarkerController@index');

@@ -60,31 +60,28 @@ class MarkerController extends Controller
         $file = $request->file('image');
         $fileName = $file->getClientOriginalName();
         $destinationPath = public_path().'/images/fotky/';
-        echo 'File Name: '.$file->getClientOriginalName();
 
-        echo '<br>';
-        echo 'File Real Path: '.$file->getRealPath();
         Input::file('image')->move($destinationPath, $fileName);
 
-
-        //Input::file('image')->move($destinationPath);
-
-
-
         $address = Input::get("address");
+        $hero = Input::get("hero");
+
+        //dd ($hero);
 
         $latLong = getLatLong($address);
         echo $latitude = $latLong['latitude']?$latLong['latitude']:'Not found';
-        echo '<br>';
+        //echo '<br>';
         echo $longitude = $latLong['longitude']?$latLong['longitude']:'Not found';
 
         $marker->address = $address;
         $marker->lat = $latitude;
         $marker->lng = $longitude;
         $marker->displayimage = $fileName;
+        $marker->hero = $hero;
+
 
         $marker->save();
-        //return redirect()->route('home')->with('status', 'Záznam pridaný');
+        return redirect()->route('home')->with('status', 'Záznam pridaný');
     }
 
     public function showlatlongindex()

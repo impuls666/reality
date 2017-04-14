@@ -14,5 +14,6 @@ class Marker extends Model
     'lat',
     'lng',
     'type',
+    'hero'
     ];
 }

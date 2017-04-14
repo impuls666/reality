@@ -2,7 +2,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Using MySQL and PHP with Google Maps</title>
+    <title>Reality</title>
     <style>
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
@@ -16,12 +16,52 @@
             margin: 0;
             padding: 0;
         }
+        .big {
+        width:300px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .small {
+        width:200px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .balicek {
+            display: flex; /* equal height of the children */
+        }
+
+        .popis {
+            flex: 1; /* additionally, equal width */
+
+            padding: 1em;
+
+        }
+        .obrazok {
+            flex: 1; /* additionally, equal width */
+            text-align:center;
+            padding: 1em;
+
+        }
+
+        .centerer {
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+
     </style>
 </head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <body>
 <div id="map"></div>
+
 <script type="text/javascript">
+
+
+
+
     //<![CDATA[
 
     var customIcons = {
@@ -40,7 +80,7 @@
         var map = new google.maps.Map(document.getElementById("map"), {
             center: new google.maps.LatLng(48.6724821, 19.696058),
             zoom: 7,
-            mapTypeId: 'satellite'
+            mapTypeId: 'roadmap'
         });
         var infowindow = new google.maps.InfoWindow();
 
@@ -66,20 +106,28 @@
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
 
-                        //infowindow.setContent(markers[i].getAttribute("name"));
+                        var name = markers[i].getAttribute("name");
+                        var address = markers[i].getAttribute("address");
+                        var size = markers[i].getAttribute('size');
                         infowindow.setContent(
-                        "<strong>názov miesta:</strong>"+markers[i].getAttribute('name')+"<br>"+
-                        "<strong>ulica:</strong>"+markers[i].getAttribute('address')+"<br>"+
-                        "<img src="+/images/+"fotky/"+markers[i].getAttribute('image')+">"
 
-                        );
+                                @include('content')
+
+
+                      );
                         console.log(markers[i]);
+
+
+
+
                         infowindow.open(map, marker);
                     }
                 })(marker, i));
                 cluster.push(marker);
+
             }
             var mc = new MarkerClusterer(map,cluster);
+
         });
     }
 
@@ -98,11 +146,13 @@
         request.onreadystatechange = function() {
             if (request.readyState == 4) {
                 request.onreadystatechange = doNothing;
+
                 callback(request, request.status);
             }
         };
 
         request.open('GET', url, true);
+
         request.send(null);
     }
 
@@ -117,6 +167,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANgYNnUb9ebTTtB8RWgx0zHr4Nl-llHrI&callback=initMap">
 
 </script>
+
 
 </body>
 </html>
