@@ -30,11 +30,12 @@
 
         .balicek {
             display: flex; /* equal height of the children */
+            background: #eee;
         }
 
         .popis {
             flex: 1; /* additionally, equal width */
-
+            text-align:left;
             padding: 1em;
 
         }
@@ -49,6 +50,46 @@
             display: inline-block;
             height: 100%;
             vertical-align: middle;
+        }
+
+        .readmore {
+            -moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
+            -webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
+            box-shadow:inset 0px 1px 0px 0px #cf866c;
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0451b), color-stop(1, #bc3315));
+            background:-moz-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+            background:-webkit-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+            background:-o-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+            background:-ms-linear-gradient(top, #d0451b 5%, #bc3315 100%);
+            background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+            background-color:#d0451b;
+            -moz-border-radius:3px;
+            -webkit-border-radius:3px;
+            border-radius:3px;
+            border:1px solid #942911;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:13px;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #854629;
+        }
+        .readmore:hover {
+            background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
+            background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+            background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+            background:-o-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+            background:-ms-linear-gradient(top, #bc3315 5%, #d0451b 100%);
+            background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+            background-color:#bc3315;
+        }
+        .readmore:active {
+            position:relative;
+            top:1px;
         }
 
     </style>
@@ -109,6 +150,7 @@
                         var name = markers[i].getAttribute("name");
                         var address = markers[i].getAttribute("address");
                         var size = markers[i].getAttribute('size');
+                        var id_reality = markers[i].getAttribute('id_reality');
                         infowindow.setContent(
 
                                 @include('content')

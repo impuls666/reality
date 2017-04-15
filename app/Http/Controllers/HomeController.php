@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Marker;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +28,16 @@ class HomeController extends Controller
     }
     public function store()
     {
+
+    }
+
+    public function posts($id){
+
+         $post =     Marker::find($id);
+         //$post = Marker::all();
+        //$pica = 'do pice';
+         return view('details')->with('post',$post);
+        //return view('details');
 
     }
 
