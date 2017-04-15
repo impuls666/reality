@@ -33,11 +33,10 @@ class HomeController extends Controller
 
     public function posts($id){
 
-         $post =     Marker::find($id);
-         //$post = Marker::all();
-        //$pica = 'do pice';
+        $post =     Marker::find($id);
+
          return view('details')->with('post',$post);
-        //return view('details');
+
 
     }
 

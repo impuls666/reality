@@ -24,7 +24,7 @@ Route::get('data', 'MarkerController@index');
 
 Auth::routes();
 
-Route::get('post/{id}', 'HomeController@posts')->name('post');
+Route::get('post/{id}', 'Postcontroller@show')->name('post');
 
 
 Route::get('home', 'HomeController@index')->name('home');
