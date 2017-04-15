@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Marker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
-class PostController extends Controller
+class FilterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        //$marker = new Marker;
+
+      $price = Input::get("price");
+       // return $price;
+      return $post = Marker::get()->where('price','<=',$price);
+      //return view('map')->with('post',$post);
     }
 
     /**
@@ -46,9 +52,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Marker::find($id);
-        return view('details')->with('post',$post);
-
+        //
     }
 
     /**

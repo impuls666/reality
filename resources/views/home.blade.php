@@ -19,8 +19,8 @@
                    {!! Form::text('address') !!}<br>
                    {!!Form::label('type', 'type') !!}
                    {!! Form::select('type', array('restaurant' => 'ikona1', 'bar' => 'ikona2')) !!}<br>
-                    <input type="hidden" name="hero" value="small" />
-                    <input type="checkbox" name="hero" value="big" />
+                    <input type="hidden" name="size" value="small" />
+                    <input type="checkbox" name="size" value="big" />
                     {!! Form::file('image') !!}<br>
                    {!! Form::submit('Vložiť') !!}
                    {!! Form::close() !!}

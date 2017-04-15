@@ -13,19 +13,14 @@ class MarkerController extends Controller
     public function index()
     {
         $markers = DB::table('markers')->get();
-        //dd($markers[1]->name);
-        /* $xml = new \SimpleXMLElement('<xml/>');
-         $bla = $xml->addChild('bla');
-         foreach ($markers as $marker) {
-             $bla->addChild('name', $marker->name);
-         }
-         header('Content-type: text/xml');
-         $vystup = $xml->asXML();
 
-         return view('welcome',["xml"=>$vystup]);*/
+
+
+
+
         return response()->view('list', ["markers" => $markers])->header('Content-Type', 'text/xml');
 
-        //return response()->view('pages.sitemap', compact('posts'))->header('Content-Type', 'text/xml');
+
     }
 
     public function store(Request $request)
@@ -64,9 +59,9 @@ class MarkerController extends Controller
         Input::file('image')->move($destinationPath, $fileName);
 
         $address = Input::get("address");
-        $hero = Input::get("hero");
+        $size = Input::get("size");
 
-        //dd ($hero);
+
 
         $latLong = getLatLong($address);
         echo $latitude = $latLong['latitude']?$latLong['latitude']:'Not found';
@@ -77,7 +72,7 @@ class MarkerController extends Controller
         $marker->lat = $latitude;
         $marker->lng = $longitude;
         $marker->displayimage = $fileName;
-        $marker->hero = $hero;
+        $marker->size = $size;
 
 
         $marker->save();

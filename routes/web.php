@@ -14,10 +14,11 @@
 //Route::get('/','MarkerController@index');
 //return view('welcome');
 //dd(\App\Marker::all()->toArray());
-Route::get('/', function ()
-{
+Route::get('/', function (){
     return view('map');
 });
+
+Route::post('/', 'FilterController@index')->name('filter');
 
 Route::get('data', 'MarkerController@index');
 

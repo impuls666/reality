@@ -210,6 +210,20 @@
 
 </script>
 
+{!! Form::open(array('route' => 'filter', 'class' => 'form')) !!}
+<div class="form-group">
+    {!! Form::label('Max Price') !!}
+    {!! Form::text('price', null,
+        array('required',
+              'class'=>'form-control',
+              'placeholder'=>'price')) !!}
+</div>
+<div class="form-group">
+    {!! Form::submit('submit',
+      array('class'=>'btn btn-primary')) !!}
+</div>
+{!! Form::close() !!}
 
 </body>
+
 </html>

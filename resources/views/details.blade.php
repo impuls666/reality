@@ -9,6 +9,5 @@
 </head>
 <body>
         <h1>{{$post->name}}</h1>
-
 </body>
 </html>

@@ -31,14 +31,7 @@ class HomeController extends Controller
 
     }
 
-    public function posts($id){
 
-        $post =     Marker::find($id);
-
-         return view('details')->with('post',$post);
-
-
-    }
 
 
 }
