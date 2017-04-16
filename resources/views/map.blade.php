@@ -126,7 +126,7 @@
         var infowindow = new google.maps.InfoWindow();
 
         // Change this depending on the name of your PHP file
-        downloadUrl("/data", function(data) {
+        downloadUrl("/data/{{$price}}", function(data) {
             var xml = data.responseXML;
             var markers = xml.documentElement.getElementsByTagName("marker");
             for (var i = 0; i < markers.length; i++) {

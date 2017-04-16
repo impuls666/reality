@@ -14,14 +14,18 @@
 //Route::get('/','MarkerController@index');
 //return view('welcome');
 //dd(\App\Marker::all()->toArray());
-Route::get('/', function (){
-    return view('map');
+
+Route::get('/', function () {
+    return view('map', ['price' => '']);
 });
 
-Route::post('/', 'FilterController@index')->name('filter');
+
+
+Route::post('/', 'FilterController@change')->name('filter');
 
 Route::get('data', 'MarkerController@index');
 
+Route::get('data/{price}', 'FilterController@show');
 
 Auth::routes();
 

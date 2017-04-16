@@ -83,4 +83,11 @@ class MarkerController extends Controller
     {
         return view('latlng');
     }
+    public function show($price) {
+
+
+
+        return $post = Marker::get()->where('price','<=',$price);
+
+    }
 }

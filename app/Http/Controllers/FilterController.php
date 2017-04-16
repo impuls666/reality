@@ -15,12 +15,7 @@ class FilterController extends Controller
      */
     public function index()
     {
-        //$marker = new Marker;
 
-      $price = Input::get("price");
-       // return $price;
-      return $post = Marker::get()->where('price','<=',$price);
-      //return view('map')->with('post',$post);
     }
 
     /**
@@ -50,9 +45,11 @@ class FilterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($price)
     {
-        //
+        $post = Marker::get()->where('price','<=',$price);
+        return response()->view('list', ["markers" => $post])->header('Content-Type', 'text/xml');
+
     }
 
     /**
@@ -87,5 +84,12 @@ class FilterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function change() {
+
+        $price = Input::get("price");
+        //return response()->view('test',["price",$price]);
+        return view('map', ['price' => $price]);
     }
 }
