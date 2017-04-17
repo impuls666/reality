@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Marker;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -86,10 +87,15 @@ class FilterController extends Controller
         //
     }
 
-    public function change() {
+    public function change(Request $request) {
 
         $price = Input::get("price");
         //return response()->view('test',["price",$price]);
+
+        Input::flash();
+
+        //redirect()->back()->withInput();
+
         return view('map', ['price' => $price]);
-    }
+      }
 }

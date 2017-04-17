@@ -92,11 +92,41 @@
             top:1px;
         }
 
+        #wrapper { position: relative; }
+        #over_map { position: absolute; top: 10px; left: 10px; z-index: 99; background:#fff;padding:20px }
+
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <body>
-<div id="map"></div>
+
+
+
+<div id="wrapper">
+    <div id="map"></div>
+    <div id="over_map">
+        <h1>Filter:</h1>
+        {!! Form::open(array('route' => 'filter', 'class' => 'form')) !!}
+        <div class="form-group">
+            {!! Form::label('Max Price') !!}
+
+            <input class="form-control" name="price" type="text" class="form-control" placeholder="price" value="{!! old('price') !!}">
+
+
+
+        </div>
+        <div class="form-group">
+            {!! Form::submit('submit',
+              array('class'=>'btn btn-primary')) !!}
+        </div>
+        {!! Form::close() !!}
+    </div>
+</div>
+
+
+
 
 <script type="text/javascript">
 
@@ -210,19 +240,7 @@
 
 </script>
 
-{!! Form::open(array('route' => 'filter', 'class' => 'form')) !!}
-<div class="form-group">
-    {!! Form::label('Max Price') !!}
-    {!! Form::text('price', null,
-        array('required',
-              'class'=>'form-control',
-              'placeholder'=>'price')) !!}
-</div>
-<div class="form-group">
-    {!! Form::submit('submit',
-      array('class'=>'btn btn-primary')) !!}
-</div>
-{!! Form::close() !!}
+
 
 </body>
 
